@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>let text = "Using the Files app it is easy to combine\nGit with Pythonista, DraftCode for PHP,\nSwift Playgrounds &amp; many other apps."
+
+import UIKit
+import PlaygroundSupport
+
+class AnimatedLabel : UILabel {
+    var displayLink: CADisplayLink?
+    var startTime: CFTimeInterval?
+    var targetText = String()
+    
+    private func stopAnimation() {
+        if let existingLink = displayLink {
+            existingLink.remove(from: .current, forMode: .defaultRunLoopMode)
+        }
+    }
+    
+    public func animatedSet(text: String, duration: TimeInterval) {
+        stopAnimation()
+        
+        targetText = text
+        startTime = nil
+        
+        let link = CADisplayLink(target: self, selector: #selector(step))
+        link.add(to: .current, forMode: .defaultRunLoopMode)
+        displayLink = link
+    }
+    
+    @objc private func step(displaylink: CADisplayLink) {
+        if startTime == nil {
+            startTime = displayLink?.timestamp
+        }
+        
+        let seconds = displayLink!.timestamp - startTime!
+        let expectedLength = Int(20.0 * seconds)
+        
+        // label should be fully drawn and we can stop animating
+        if expectedLength &gt;= targetText.count {
+            text = targetText
+            stopAnimation()
+        } else {
+            let start = targetText.startIndex
+            let end = targetText.index(start, offsetBy: expectedLength)
+            let substring = targetText[..&lt;end]
+            text = String(substring)
+        }
+    }
+}
+
+class MyViewController : UIViewController {
+    func addLabel(color: UIColor, origin: CGPoint) {
+        let label = AnimatedLabel()
+        label.frame = CGRect(x: origin.x, y: origin.y, width: 600, height: 200)
+        label.font = UIFont.monospacedDigitSystemFont(ofSize: 32, weight: .bold)
+        label.animatedSet(text: text, duration: 1.5)
+        label.textColor = color
+        label.numberOfLines = 0
+        
+        view.addSubview(label)
+    }
+    
+    override func loadView() {
+        let view = UIView()
+        view.backgroundColor = .white
+        self.view = view
+        
+        addLabel(color: .black, origin: CGPoint(x: 20-1, y: 100+1))
+        
+        let color = UIColor(red: 57.0/255.0, green: 156.0/255.0, blue: 252.0/255.0, alpha: 1)
+        addLabel(color: color, origin: CGPoint(x: 20, y: 100))
+        
+    }
+}
+// Present the view controller in the Live View window
+PlaygroundPage.current.liveView = MyViewController()
+</string>
+			<key>ModifiedRange</key>
+			<string>{283, 2454}</string>
+			<key>OriginalContent</key>
+			<string>let circle = Circle()
+circle.draggable = true
+
+</string>
+			<key>OriginalRange</key>
+			<string>{283, 47}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Shapes.playgroundchapter/Pages/Canvas.playgroundpage/Contents.swift</string>
+</dict>
+</plist>

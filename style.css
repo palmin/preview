@@ -9,7 +9,7 @@
 }
 
 html {
-	background: linear-gradient(#FFFFFF, #F0F6FA);
+	background: linear-gradient(hsl(204,56%,26%), hsl(204,56%,56%));
 	height: 100%;
 }
 

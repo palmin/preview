@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>ModifiedContent</key>
-			<string>let text = "Using the Files app it is easy to combine\nGit with Pythonista, DraftCode for PHP,\nSwift Playgrounds &amp; many other apps."
+			<string>let text = "Using the Files app it is easy to\ncombine Git with Obsidian, Swift\nPlaygrounds &amp; many other apps."
 
 import UIKit
 import PlaygroundSupport
@@ -73,7 +73,7 @@ class MyViewController : UIViewController {
         
         addLabel(color: .black, origin: CGPoint(x: 20-1, y: 100+1))
         
-        let color = UIColor(red: 57.0/255.0, green: 156.0/255.0, blue: 252.0/255.0, alpha: 1)
+        let color = UIColor(red: 57.0/255.0, green: 46.0/255.0, blue: 142.0/255.0, alpha: 1)
         addLabel(color: color, origin: CGPoint(x: 20, y: 100))
         
     }
@@ -82,7 +82,7 @@ class MyViewController : UIViewController {
 PlaygroundPage.current.liveView = MyViewController()
 </string>
 			<key>ModifiedRange</key>
-			<string>{283, 2454}</string>
+			<string>{283, 2432}</string>
 			<key>OriginalContent</key>
 			<string>let circle = Circle()
 circle.draggable = true
